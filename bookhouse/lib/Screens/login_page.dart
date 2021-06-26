@@ -1,9 +1,19 @@
 import 'package:bookify/Common/app_color.dart';
+import 'package:bookify/Screens/home_page.dart';
+import 'package:bookify/Screens/result_dart.dart';
+import 'package:bookify/Widgets/sign_in_buttons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     double _height = MediaQuery.of(context).size.height;
@@ -19,11 +29,11 @@ class LoginPage extends StatelessWidget {
             children: [
               Expanded(
                 flex: 3,
-                child: leftTab(),
+                child: _leftTab(),
               ),
               Expanded(
                 flex: 4,
-                child: rightTab(),
+                child: _rightTab(context: context),
               )
             ],
           ),
@@ -31,68 +41,125 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-Widget rightTab() {
+Widget _rightTab({required context}) {
   return Container(
     padding: EdgeInsets.all(46),
     color: Colors.white,
     child: Column(
       children: [
-        SizedBox(height: 40),
+        SizedBox(height: 20),
         Text(
-          'Welcome Back',
+          'Welcome To Bookify',
           style: TextStyle(
-              color: Colors.black, fontSize: 30, fontWeight: FontWeight.w600),
+              color: Color(0xff00539C),
+              fontSize: 30,
+              fontWeight: FontWeight.bold),
         ),
         SizedBox(
-          height: 30,
+          height: 70,
         ),
         TextField(
+          maxLines: 1,
+          style: TextStyle(fontSize: 14),
           decoration: InputDecoration(
-              labelText: "Username",
+              contentPadding: EdgeInsets.only(left: 20),
+              labelText: "Email or phone number",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
               )),
         ),
         SizedBox(
-          height: 20,
+          height: 30,
         ),
         TextField(
+          maxLines: 1,
+          style: TextStyle(fontSize: 14),
           decoration: InputDecoration(
+              contentPadding: EdgeInsets.only(left: 20),
+              suffixIcon: Icon(
+                Icons.visibility_off_outlined,
+                color: Colors.grey,
+                size: 20,
+              ),
+              counterText: "Forgot password?",
               labelText: "Password",
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(15),
               )),
         ),
         SizedBox(
-          height: 20,
+          height: 40,
         ),
-        TextButton(
-          onPressed: () {}, //TODO
-          child: Text("Login",style: TextStyle(
-            color: AppColor.textColor,
-          ),),
-          style: ButtonStyle(
-            padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 30,vertical: 15)),
-              backgroundColor: MaterialStateProperty.all(AppColor.blue),
-              shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)))),
+        GestureDetector(
+          onTap: () {
+            Navigator.push(context, PageTransition(child: HomePage(), type: PageTransitionType.fade));
+          },
+          child: Container(
+            width: 90,
+            height: 40,
+            child: Center(
+              child: Text(
+                "Login",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w300),
+              ),
+            ),
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                  offset: Offset(0, 13),
+                  blurRadius: 13,
+                  spreadRadius: 1,
+                  color: Colors.grey.withOpacity(.6))
+            ], color: AppColor.blue, borderRadius: BorderRadius.circular(30)),
+          ),
         ),
         SizedBox(
-          height: 70,
+          height: 40,
         ),
         Text(
-          "Forgot Password?",
-          style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1)),
+          "Don't have an account? Create an account",
+          style: TextStyle(
+              color: Color.fromRGBO(143, 148, 251, 1),
+              decoration: TextDecoration.underline),
         ),
+        SizedBox(
+          height: 30,
+        ),
+        Divider(
+          thickness: 1,
+        ),
+        Text(
+          "Or continue with",
+          style: TextStyle(
+              color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 13),
+        ),
+        SizedBox(
+          height: 25,
+        ),
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          otherSignInButton(url: "/google.png"),
+          SizedBox(
+            width: 20,
+          ),
+          otherSignInButton(url: "/github.png"),
+          SizedBox(
+            width: 20,
+          ),
+          otherSignInButton(url: "/facebook.png"),
+        ])
       ],
     ),
   );
 }
 
-Widget leftTab() {
+Widget _leftTab() {
   return Container(
     color: AppColor.blue,
     child: Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
           height: 40,
