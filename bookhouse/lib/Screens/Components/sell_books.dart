@@ -278,7 +278,7 @@ class _SellBooksState extends State<SellBooks> {
                     height: 40,
                     child: Center(
                       child: Text(
-                        "Confirm To Sell",
+                        "Confirm",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,

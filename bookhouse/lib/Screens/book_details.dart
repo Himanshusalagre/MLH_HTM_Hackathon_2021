@@ -1,6 +1,9 @@
 import 'package:bookify/Common/app_color.dart';
 import 'package:bookify/Common/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+
+import 'home_page.dart';
 
 class BookDetails extends StatelessWidget {
   final String imageUrl;
@@ -29,7 +32,7 @@ class BookDetails extends StatelessWidget {
               spreadRadius: 5,
               color: Colors.grey.withOpacity(.8))
         ], color: AppColor.primary, borderRadius: BorderRadius.circular(10)),
-        padding: EdgeInsets.all(40),
+        padding: EdgeInsets.all(80),
         height: 800,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -51,7 +54,7 @@ class BookDetails extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(width: 20),
+            SizedBox(width: 40),
             Container(
               width: 500,
               child: Column(
@@ -84,9 +87,9 @@ class BookDetails extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(width: 20,),
+            SizedBox(width: 30,),
             Container(
-              width: 300,
+              width: 250,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -102,7 +105,6 @@ class BookDetails extends StatelessWidget {
                   maxLines: 3,
                 ), SizedBox(height: 20,),
                 Container(
-                  width: 250,
                   child: TextField(
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(left: 20),
@@ -111,7 +113,33 @@ class BookDetails extends StatelessWidget {
                           borderRadius: BorderRadius.circular(15),
                         )),
                   ),
-                )
+                ),
+                    SizedBox(height: 20,),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, PageTransition(child: HomePage(), type: PageTransitionType.fade));
+                      },
+                      child: Container(
+                        width: 90,
+                        height: 40,
+                        child: Center(
+                          child: Text(
+                            "Submit",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w300),
+                          ),
+                        ),
+                        decoration: BoxDecoration(boxShadow: [
+                          BoxShadow(
+                              offset: Offset(0, 13),
+                              blurRadius: 13,
+                              spreadRadius: 1,
+                              color: Colors.grey.withOpacity(.6))
+                        ], color: AppColor.blue, borderRadius: BorderRadius.circular(16)),
+                      ),
+                    ),
               ]),
 
             ),
