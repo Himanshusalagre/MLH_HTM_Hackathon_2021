@@ -73,6 +73,7 @@ Widget _rightTab({required context}) {
         ),
         TextField(
           maxLines: 1,
+          keyboardType: TextInputType.visiblePassword,
           style: TextStyle(fontSize: 14),
           decoration: InputDecoration(
               contentPadding: EdgeInsets.only(left: 20),

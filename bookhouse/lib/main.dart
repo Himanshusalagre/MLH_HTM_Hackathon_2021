@@ -1,7 +1,8 @@
+import 'package:bookify/Screens/Components/sell_books.dart';
 import 'package:bookify/Screens/home_page.dart';
 import 'package:bookify/Screens/login_page.dart';
 import 'package:bookify/Screens/result_dart.dart';
-import 'package:bookify/Widgets/search_page.dart';
+import 'package:bookify/Screens/Components/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

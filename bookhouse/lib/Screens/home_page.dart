@@ -1,6 +1,7 @@
 import 'package:bookify/Common/app_color.dart';
 import 'package:bookify/Screens/result_dart.dart';
-import 'package:bookify/Widgets/search_page.dart';
+import 'package:bookify/Screens/Components/search_page.dart';
+import 'package:bookify/Screens/Components/sell_books.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -12,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List drawerItem = ["Search", "New Reading", "My Order", "Contact Us"];
+  List drawerItem = ["Search", "New Reading", "My Order","Sell Your Books", "Contact Us"];
   int _selected = 0;
 
   @override
@@ -55,6 +56,7 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
             )),
+            SellBooks(),
             Center(
                 child: Text(
               "Contact us",
@@ -75,6 +77,16 @@ class _HomePageState extends State<HomePage> {
         width: 200,
         color: AppColor.blue,
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox(
+            height: 40,
+          ),
+          Text(
+            "Bookify",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 30,
+                fontWeight: FontWeight.w600),
+          ),
           SizedBox(
             height: 40,
           ),
